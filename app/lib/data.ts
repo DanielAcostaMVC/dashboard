@@ -24,7 +24,7 @@ export async function fetchRevenue() {
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-     //console.log(['Data fetch completed after 7 seconds.',data.rows]);
+     //console.log(['Data fetch completed after 3 seconds.',data.rows]);
 
     return data.rows;
   } catch (error) {
@@ -67,7 +67,7 @@ export async function fetchCardData() {
 
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     console.log('Fetching customerCountPromise data...');
-     await new Promise((resolve) => setTimeout(resolve, 5000));
+     await new Promise((resolve) => setTimeout(resolve, 1500));
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     console.log('Fetching invoiceStatusPromise data...');
      await new Promise((resolve) => setTimeout(resolve, 2000));

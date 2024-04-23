@@ -5,6 +5,7 @@ import {
   InboxIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
+import {  fetchCardData } from '@/app/lib/data';
 
 const iconMap = {
   collected: BanknotesIcon,
@@ -30,7 +31,7 @@ export default async function CardWrapper() {
   );
 }
 
-export function Card({
+export async function Card({
   title,
   value,
   type,
@@ -40,6 +41,11 @@ export function Card({
   type: 'invoices' | 'customers' | 'pending' | 'collected';
 }) {
   const Icon = iconMap[type];
+  
+  if (value == 'tPI'){
+    const { totalPaidInvoices } = await fetchCardData();
+    value = totalPaidInvoices;
+  }
 
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
