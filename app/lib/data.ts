@@ -19,8 +19,8 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-     console.log('Fetching revenue data...');
-     await new Promise((resolve) => setTimeout(resolve, 3000));
+     //console.log('Fetching revenue data...');
+     //await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
@@ -62,15 +62,15 @@ export async function fetchCardData() {
     // However, we are intentionally splitting them to demonstrate
     // how to initialize multiple queries in parallel with JS.
 
-    console.log('Fetching invoiceCountPromise data...');
-     await new Promise((resolve) => setTimeout(resolve, 1000));
+    //console.log('Fetching invoiceCountPromise data...');
+     //await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
-    console.log('Fetching customerCountPromise data...');
-     await new Promise((resolve) => setTimeout(resolve, 1500));
+    //console.log('Fetching customerCountPromise data...');
+     //await new Promise((resolve) => setTimeout(resolve, 1500));
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
-    console.log('Fetching invoiceStatusPromise data...');
-     await new Promise((resolve) => setTimeout(resolve, 2000));
+    //console.log('Fetching invoiceStatusPromise data...');
+     //await new Promise((resolve) => setTimeout(resolve, 2000));
     const invoiceStatusPromise = sql`SELECT
          SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
@@ -99,7 +99,7 @@ export async function fetchCardData() {
   }
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 8;
 export async function fetchFilteredInvoices(
   query: string,
   currentPage: number,
